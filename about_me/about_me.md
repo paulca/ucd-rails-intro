@@ -8,7 +8,7 @@
 
 !SLIDE center
 
-![Ketchup](Ketchup.png)
+![Ketchup](ketchup.png)
 
 !SLIDE center
 
