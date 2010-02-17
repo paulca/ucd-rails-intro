@@ -22,6 +22,21 @@
                   :conditions => ["date > ?", Time.now.end_of_day]
     end
     
+!SLIDE smaller
+    @@@ruby
+    Meeting.create!
+    ==> ActiveRecord::RecordInvalid: 
+          Validation failed: Title cant be blank
+    
+    Meeting.create!(:title => "Hello! New Meeting")
+    => #<Meeting id: 34, title: "Hello! New Meeting">
+    
+    Meeting.all
+    => [#<Meeting id: 34, title: "Hello! New Meeting">]
+
+    Meeting.find(34)
+    => #<Meeting id: 34, title: "Hello! New Meeting">
+    
 !SLIDE
 # ActionController #
 
@@ -30,7 +45,8 @@
     class MeetingsController < ApplicationController
 
       before_filter :get_meeting, :except => [:create]
-
+      
+      # /meetings/34
       def show
         respond_to do |wants|
           wants.html
@@ -97,11 +113,30 @@
 ## I18n ##
 
     @@@ ruby
-    I18n.t('dictionary')
-    => 'Dictionary'
+    I18n.locale = 'en'
+    => 'en'
+    I18n.t('pizza')
+    => 'Pizza'
+    I18n.locale = 'fr'
+    => 'fr'
+    I18n.t('pizza')
+    => 'Grrrfffffgggh'
     
 !SLIDE commandline
     
 ## Generators ##
 
     ./script/generate controller generators
+
+!SLIDE commandline
+
+## Generators ##
+
+    ./script/generate controller generators
+                       helper
+                       mailer
+                       migration
+                        model
+                        plugin
+                        resource
+                        scaffold

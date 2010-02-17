@@ -13,8 +13,11 @@
 !SLIDE center
 
 ![Engine Yard](engineyard.png)
+### railsplugins.org ###
+### railsdevelopment.com ###
 
 ![Eason](eason.gif)
+### eason.ie ###
 
 !SLIDE
 
