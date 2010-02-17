@@ -31,3 +31,13 @@
 !SLIDE
 
 # Google Your Face Off #
+
+!SLIDE
+
+## http://ucd-rails-intro.heroku.com/ ##
+
+## http://github.com/paulca/ucd-rails-intro/ ##
+
+!SLIDE
+
+# Thanks! #

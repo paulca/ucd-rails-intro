@@ -6,4 +6,7 @@
 
 ### by Paul Campbell ###
 
+### http://ucd-rails-intro.heroku.com/ ###
+
+### http://github.com/paulca/ucd-rails-intro/ ###
 
