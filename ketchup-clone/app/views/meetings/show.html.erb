@@ -1,0 +1,32 @@
+<p>
+  <b>Title:</b>
+  <%=h @meeting.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @meeting.description %>
+</p>
+
+<ul>
+<%- @meeting.items.each do |item| -%>
+  <li><%= item.content %></li>
+<%- end -%>
+</ul>
+
+<h3>Add Item</h3>
+<% form_for @meeting do |f| -%>
+  <%= f.error_messages  -%>
+  <fieldset>
+    <%- @meeting.items.build -%>
+    <%- f.fields_for :items do |item_form| -%>
+      <%- if item_form.object.new_record? -%>
+        <%= item_form.text_field :content %>
+      <%- end -%>
+    <%- end -%>
+    <%= f.submit "Save" %>
+  </fieldset>
+<% end -%>
+
+<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+<%= link_to 'Back', meetings_path %>

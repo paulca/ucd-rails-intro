@@ -1,0 +1,424 @@
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (13.7ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateMeetings (20100217150921)
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCREATE TABLE "meetings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100217150921')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("meetings")[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 15:20:39) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 15:22:47) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing MeetingsController#index (for 127.0.0.1 at 2010-02-17 15:23:04) [GET]
+  [4;36;1mMeeting Load (0.5ms)[0m   [0;1mSELECT * FROM "meetings" [0m
+Rendering template within layouts/meetings
+Rendering meetings/index
+Completed in 92ms (View: 87, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing MeetingsController#new (for 127.0.0.1 at 2010-02-17 15:31:15) [GET]
+Rendering template within layouts/meetings
+Rendering meetings/new
+Completed in 15ms (View: 10, DB: 0) | 200 OK [http://localhost/meetings/new]
+
+
+Processing MeetingsController#create (for 127.0.0.1 at 2010-02-17 15:33:24) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"xRNyfv+Ffp4Tv9rMh4RGW2DnUA99jsUkuomlvY5HoNg=", "meeting"=>{"title"=>"Paul's Meeting", "description"=>"A fine description"}}
+  [4;35;1mMeeting Create (0.4ms)[0m   [0mINSERT INTO "meetings" ("created_at", "title", "updated_at", "description") VALUES('2010-02-17 15:33:24', 'Paul''s Meeting', '2010-02-17 15:33:24', 'A fine description')[0m
+Redirected to http://localhost:3000/meetings/1
+Completed in 9ms (DB: 0) | 302 Found [http://localhost/meetings]
+
+
+Processing MeetingsController#show (for 127.0.0.1 at 2010-02-17 15:33:24) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mMeeting Load (0.2ms)[0m   [0;1mSELECT * FROM "meetings" WHERE ("meetings"."id" = 1) [0m
+Rendering template within layouts/meetings
+Rendering meetings/show
+Completed in 16ms (View: 9, DB: 0) | 200 OK [http://localhost/meetings/1]
+
+
+Processing MeetingsController#show (for 127.0.0.1 at 2010-02-17 15:35:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mMeeting Load (0.2ms)[0m   [0mSELECT * FROM "meetings" WHERE ("meetings"."id" = 1) [0m
+Rendering template within layouts/meetings
+Rendering meetings/show
+Completed in 8ms (View: 2, DB: 0) | 200 OK [http://localhost/meetings/1]
+
+
+Processing MeetingsController#index (for 127.0.0.1 at 2010-02-17 15:35:50) [GET]
+  [4;36;1mMeeting Load (0.4ms)[0m   [0;1mSELECT * FROM "meetings" [0m
+Rendering template within layouts/meetings
+Rendering meetings/index
+Completed in 10ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing MeetingsController#index (for 127.0.0.1 at 2010-02-17 15:37:55) [GET]
+  [4;35;1mMeeting Load (0.4ms)[0m   [0mSELECT * FROM "meetings" [0m
+Rendering template within layouts/application
+Rendering meetings/index
+Completed in 15ms (View: 11, DB: 0) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateMeetings (20100217150921)
+Migrating to CreateItems (20100217154014)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "meeting_id" integer, "content" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100217154014')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("items")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("meetings")[0m
+  [4;36;1mMeeting Load (0.4ms)[0m   [0;1mSELECT * FROM "meetings" LIMIT 1[0m
+  [4;35;1mItem Create (0.5ms)[0m   [0mINSERT INTO "items" ("meeting_id", "created_at", "updated_at", "content") VALUES(1, '2010-02-17 15:46:12', '2010-02-17 15:46:12', 'Here''s an item')[0m
+
+
+Processing MeetingsController#show (for 127.0.0.1 at 2010-02-17 15:47:49) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mMeeting Load (0.2ms)[0m   [0;1mSELECT * FROM "meetings" WHERE ("meetings"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering meetings/show
+  [4;35;1mItem Load (0.3ms)[0m   [0mSELECT * FROM "items" WHERE ("items".meeting_id = 1) [0m
+Completed in 109ms (View: 15, DB: 1) | 200 OK [http://localhost/meetings/1]
+
+
+Processing MeetingsController#show (for 127.0.0.1 at 2010-02-17 15:52:00) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mMeeting Load (0.2ms)[0m   [0;1mSELECT * FROM "meetings" WHERE ("meetings"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering meetings/show
+  [4;35;1mItem Load (0.3ms)[0m   [0mSELECT * FROM "items" WHERE ("items".meeting_id = 1) [0m
+
+ActionView::TemplateError (undefined method `subit' for #<ActionView::Helpers::FormBuilder:0x103497bf0>) on line #24 of app/views/meetings/show.html.erb:
+21:     <%- f.fields_for :items do |item_form| -%>
+22:       <%= item_form.text_field :content %>
+23:     <%- end -%>
+24:     <%= f.subit "Save" %>
+25:   </fieldset>
+26: <% end -%>
+27: 
+
+    app/views/meetings/show.html.erb:24
+    app/views/meetings/show.html.erb:18
+    app/controllers/meetings_controller.rb:18:in `show'
+
+Rendered rescues/_trace (64.8ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MeetingsController#show (for 127.0.0.1 at 2010-02-17 15:52:14) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mMeeting Load (0.2ms)[0m   [0;1mSELECT * FROM "meetings" WHERE ("meetings"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering meetings/show
+  [4;35;1mItem Load (0.4ms)[0m   [0mSELECT * FROM "items" WHERE ("items".meeting_id = 1) [0m
+Completed in 21ms (View: 15, DB: 1) | 200 OK [http://localhost/meetings/1]
+
+
+Processing MeetingsController#show (for 127.0.0.1 at 2010-02-17 15:52:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mMeeting Load (0.2ms)[0m   [0;1mSELECT * FROM "meetings" WHERE ("meetings"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering meetings/show
+  [4;35;1mItem Load (0.3ms)[0m   [0mSELECT * FROM "items" WHERE ("items".meeting_id = 1) [0m
+Completed in 19ms (View: 13, DB: 1) | 200 OK [http://localhost/meetings/1]
+
+
+Processing MeetingsController#show (for 127.0.0.1 at 2010-02-17 15:53:01) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mMeeting Load (0.2ms)[0m   [0;1mSELECT * FROM "meetings" WHERE ("meetings"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering meetings/show
+  [4;35;1mItem Load (0.3ms)[0m   [0mSELECT * FROM "items" WHERE ("items".meeting_id = 1) [0m
+Completed in 40ms (View: 34, DB: 0) | 200 OK [http://localhost/meetings/1]
+
+
+Processing MeetingsController#show (for 127.0.0.1 at 2010-02-17 15:54:17) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mMeeting Load (0.2ms)[0m   [0;1mSELECT * FROM "meetings" WHERE ("meetings"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering meetings/show
+  [4;35;1mItem Load (0.3ms)[0m   [0mSELECT * FROM "items" WHERE ("items".meeting_id = 1) [0m
+Completed in 19ms (View: 13, DB: 0) | 200 OK [http://localhost/meetings/1]
+
+
+Processing MeetingsController#update (for 127.0.0.1 at 2010-02-17 15:55:17) [PUT]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"xRNyfv+Ffp4Tv9rMh4RGW2DnUA99jsUkuomlvY5HoNg=", "id"=>"1", "meeting"=>{"items_attributes"=>{"0"=>{"id"=>"1"}, "1"=>{"content"=>"And here's another item"}}}}
+  [4;36;1mMeeting Load (0.2ms)[0m   [0;1mSELECT * FROM "meetings" WHERE ("meetings"."id" = 1) [0m
+  [4;35;1mItem Load (0.3ms)[0m   [0mSELECT * FROM "items" WHERE ("items".meeting_id = 1) [0m
+  [4;36;1mItem Create (0.6ms)[0m   [0;1mINSERT INTO "items" ("meeting_id", "created_at", "updated_at", "content") VALUES(1, '2010-02-17 15:55:17', '2010-02-17 15:55:17', 'And here''s another item')[0m
+Redirected to http://localhost:3000/meetings/1
+Completed in 95ms (DB: 1) | 302 Found [http://localhost/meetings/1]
+
+
+Processing MeetingsController#show (for 127.0.0.1 at 2010-02-17 15:55:18) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mMeeting Load (0.2ms)[0m   [0mSELECT * FROM "meetings" WHERE ("meetings"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering meetings/show
+  [4;36;1mItem Load (0.4ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items".meeting_id = 1) [0m
+Completed in 17ms (View: 11, DB: 1) | 200 OK [http://localhost/meetings/1]
+
+
+Processing MeetingsController#show (for 127.0.0.1 at 2010-02-17 16:02:49) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mMeeting Load (0.2ms)[0m   [0mSELECT * FROM "meetings" WHERE ("meetings"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering meetings/show
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items".meeting_id = 1) [0m
+Completed in 16ms (View: 10, DB: 1) | 200 OK [http://localhost/meetings/1]
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateMeetings (20100217150921)
+Migrating to CreateItems (20100217154014)
+Migrating to DeviseCreateUsers (20100217160906)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) NOT NULL, "encrypted_password" varchar(40) NOT NULL, "password_salt" varchar(255) NOT NULL, "confirmation_token" varchar(20), "confirmed_at" datetime, "confirmation_sent_at" datetime, "reset_password_token" varchar(20), "remember_token" varchar(20), "remember_created_at" datetime, "sign_in_count" integer, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (61.0ms)[0m   [0;1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100217160906')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("items")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("meetings")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_users_on_reset_password_token')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_users_on_confirmation_token')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_users_on_email')[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 16:10:38) [GET]
+
+ActionController::RoutingError (No route matches "/users/new" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 16:11:29) [GET]
+
+ActionController::RoutingError (No route matches "/users/sign_up" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 16:11:45) [GET]
+
+ActionController::RoutingError (No route matches "/users/sign_up" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing RegistrationsController#new (for 127.0.0.1 at 2010-02-17 16:11:56) [GET]
+Rendering template within layouts/application
+Rendering registrations/new
+Rendered shared/_devise_links (2.0ms)
+Completed in 118ms (View: 38, DB: 0) | 200 OK [http://localhost/users/sign_up]
+
+
+Processing RegistrationsController#create (for 127.0.0.1 at 2010-02-17 16:14:19) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"xRNyfv+Ffp4Tv9rMh4RGW2DnUA99jsUkuomlvY5HoNg=", "user"=>{"password_confirmation"=>"maj0rt0m", "password"=>"maj0rt0m", "email"=>"paul@rslw.com"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'paul@rslw.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.6ms)[0m   [0mINSERT INTO "users" ("encrypted_password", "created_at", "confirmation_sent_at", "last_sign_in_ip", "updated_at", "last_sign_in_at", "sign_in_count", "password_salt", "reset_password_token", "remember_token", "current_sign_in_ip", "confirmation_token", "remember_created_at", "current_sign_in_at", "email", "confirmed_at") VALUES('ee16face1f827a647cef7a503d3dd62a72f0f0d6', '2010-02-17 16:14:19', '2010-02-17 16:14:19', NULL, '2010-02-17 16:14:19', NULL, NULL, 'WfppfkYWLfe7ERG8eyLc', NULL, NULL, NULL, 'CoY1v8jSIyosiFdRHOgq', NULL, NULL, 'paul@rslw.com', NULL)[0m
+
+ActionView::TemplateError (Missing host to link to! Please provide :host parameter or set default_url_options[:host]) on line #5 of /Users/paul/.gem/ruby/1.8/gems/devise-1.0.1/app/views/devise_mailer/confirmation_instructions.html.erb:
+2: 
+3: You can confirm your account through the link below:
+4: 
+5: <%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
+
+    (eval):20:in `user_confirmation_url'
+    devise (1.0.1) lib/devise/controllers/url_helpers.rb:32:in `send'
+    devise (1.0.1) lib/devise/controllers/url_helpers.rb:32:in `confirmation_url'
+    devise (1.0.1) app/views/devise_mailer/confirmation_instructions.html.erb:5
+    devise (1.0.1) app/models/devise_mailer.rb:42:in `render_with_scope'
+    devise (1.0.1) app/models/devise_mailer.rb:31:in `setup_mail'
+    devise (1.0.1) app/models/devise_mailer.rb:7:in `confirmation_instructions'
+    devise (1.0.1) lib/devise/models/confirmable.rb:60:in `send_confirmation_instructions'
+    devise (1.0.1) app/controllers/registrations_controller.rb:17:in `create'
+    warden (0.9.0) lib/warden/manager.rb:34:in `call'
+    warden (0.9.0) lib/warden/manager.rb:33:in `catch'
+    warden (0.9.0) lib/warden/manager.rb:33:in `call'
+
+Rendered rescues/_trace (89.9ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RegistrationsController#create (for 127.0.0.1 at 2010-02-17 16:15:15) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"xRNyfv+Ffp4Tv9rMh4RGW2DnUA99jsUkuomlvY5HoNg=", "user"=>{"password_confirmation"=>"maj0rt0m", "password"=>"maj0rt0m", "email"=>"paul@rslw.com"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'paul@rslw.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.4ms)[0m   [0mINSERT INTO "users" ("encrypted_password", "created_at", "confirmation_sent_at", "last_sign_in_ip", "updated_at", "last_sign_in_at", "sign_in_count", "password_salt", "reset_password_token", "remember_token", "current_sign_in_ip", "confirmation_token", "remember_created_at", "current_sign_in_at", "email", "confirmed_at") VALUES('e57cdd8b12059b372769ab8812eecc81c66e38bf', '2010-02-17 16:15:15', '2010-02-17 16:15:15', NULL, '2010-02-17 16:15:15', NULL, NULL, 'G7201RiXYRjApb6eUVQq', NULL, NULL, NULL, '5rT47yigqLcpblAAg3Br', NULL, NULL, 'paul@rslw.com', NULL)[0m
+
+ActionView::TemplateError (Missing host to link to! Please provide :host parameter or set default_url_options[:host]) on line #5 of /Users/paul/.gem/ruby/1.8/gems/devise-1.0.1/app/views/devise_mailer/confirmation_instructions.html.erb:
+2: 
+3: You can confirm your account through the link below:
+4: 
+5: <%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
+
+    (eval):20:in `user_confirmation_url'
+    devise (1.0.1) lib/devise/controllers/url_helpers.rb:32:in `send'
+    devise (1.0.1) lib/devise/controllers/url_helpers.rb:32:in `confirmation_url'
+    devise (1.0.1) app/views/devise_mailer/confirmation_instructions.html.erb:5
+    devise (1.0.1) app/models/devise_mailer.rb:42:in `render_with_scope'
+    devise (1.0.1) app/models/devise_mailer.rb:31:in `setup_mail'
+    devise (1.0.1) app/models/devise_mailer.rb:7:in `confirmation_instructions'
+    devise (1.0.1) lib/devise/models/confirmable.rb:60:in `send_confirmation_instructions'
+    devise (1.0.1) app/controllers/registrations_controller.rb:17:in `create'
+    warden (0.9.0) lib/warden/manager.rb:34:in `call'
+    warden (0.9.0) lib/warden/manager.rb:33:in `catch'
+    warden (0.9.0) lib/warden/manager.rb:33:in `call'
+
+Rendered rescues/_trace (57.1ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RegistrationsController#create (for 127.0.0.1 at 2010-02-17 16:16:15) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"xRNyfv+Ffp4Tv9rMh4RGW2DnUA99jsUkuomlvY5HoNg=", "user"=>{"password_confirmation"=>"maj0rt0m", "password"=>"maj0rt0m", "email"=>"paul@rslw.com"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'paul@rslw.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.5ms)[0m   [0mINSERT INTO "users" ("encrypted_password", "created_at", "confirmation_sent_at", "last_sign_in_ip", "updated_at", "last_sign_in_at", "sign_in_count", "password_salt", "reset_password_token", "remember_token", "current_sign_in_ip", "confirmation_token", "remember_created_at", "current_sign_in_at", "email", "confirmed_at") VALUES('7284f6b43f46ee62a3e2c2212e9b4531256e5d38', '2010-02-17 16:16:15', '2010-02-17 16:16:15', NULL, '2010-02-17 16:16:15', NULL, NULL, 'y3DVRBt-L12U4qpQ3r84', NULL, NULL, NULL, 'inSQW2bYPPL2Nr8_fez4', NULL, NULL, 'paul@rslw.com', NULL)[0m
+Sent mail to paul@rslw.com
+
+Date: Wed, 17 Feb 2010 16:16:15 +0000
+From: please-change-me@config-initializers-devise.com
+To: paul@rslw.com
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+Welcome paul@rslw.com!
+
+You can confirm your account through the link below:
+
+<a href="http://localhost:3000/users/confirmation?confirmation_token=inSQW2bYPPL2Nr8_fez4">Confirm my account</a>
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-17 16:16:16) [GET]
+  Parameters: {"unconfirmed"=>"true"}
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered shared/_devise_links (4.6ms)
+Completed in 35ms (View: 27, DB: 0) | 200 OK [http://localhost/users/sign_in?unconfirmed=true]
+
+
+Processing ConfirmationsController#show (for 127.0.0.1 at 2010-02-17 16:17:35) [GET]
+  Parameters: {"confirmation_token"=>"inSQW2bYPPL2Nr8_fez4"}
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."confirmation_token" = 'inSQW2bYPPL2Nr8_fez4') LIMIT 1[0m
+  [4;35;1mUser Update (0.7ms)[0m   [0mUPDATE "users" SET "updated_at" = '2010-02-17 16:17:35', "confirmed_at" = '2010-02-17 16:17:35', "confirmation_token" = NULL WHERE "id" = 1[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE "users" SET "updated_at" = '2010-02-17 16:17:35', "sign_in_count" = 1, "current_sign_in_at" = '2010-02-17 16:17:35', "current_sign_in_ip" = '127.0.0.1', "last_sign_in_at" = '2010-02-17 16:17:35', "last_sign_in_ip" = '127.0.0.1' WHERE "id" = 1[0m
+Redirected to http://localhost:3000/
+Completed in 30ms (DB: 2) | 302 Found [http://localhost/users/confirmation?confirmation_token=inSQW2bYPPL2Nr8_fez4]
+
+
+Processing MeetingsController#index (for 127.0.0.1 at 2010-02-17 16:17:35) [GET]
+  [4;35;1mMeeting Load (0.5ms)[0m   [0mSELECT * FROM "meetings" [0m
+Rendering template within layouts/application
+Rendering meetings/index
+Completed in 21ms (View: 14, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-17 16:20:07) [GET]
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Redirected to http://localhost:3000/
+Completed in 18ms (DB: 1) | 302 Found [http://localhost/users/sign_out]
+
+
+Processing MeetingsController#index (for 127.0.0.1 at 2010-02-17 16:20:07) [GET]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-17 16:20:07) [GET]
+  Parameters: {"unauthenticated"=>"true"}
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered shared/_devise_links (0.7ms)
+Completed in 16ms (View: 7, DB: 0) | 200 OK [http://localhost/users/sign_in?unauthenticated=true]
+
+
+Processing MeetingsController#index (for 127.0.0.1 at 2010-02-17 16:20:16) [GET]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-17 16:20:16) [GET]
+  Parameters: {"unauthenticated"=>"true"}
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered shared/_devise_links (0.7ms)
+Completed in 86ms (View: 7, DB: 0) | 200 OK [http://localhost/users/sign_in?unauthenticated=true]
+
+
+Processing MeetingsController#index to xml (for 127.0.0.1 at 2010-02-17 16:20:41) [GET]
+
+
+Processing MeetingsController#index to xml (for 127.0.0.1 at 2010-02-17 16:21:46) [GET]
+
+
+Processing MeetingsController#index to xml (for 127.0.0.1 at 2010-02-17 16:22:27) [GET]
+
+
+Processing MeetingsController#index to xml (for 127.0.0.1 at 2010-02-17 16:22:28) [GET]
+
+
+Processing MeetingsController#index to xml (for 127.0.0.1 at 2010-02-17 16:22:41) [GET]
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."email" = 'paul@rslw.com') LIMIT 1[0m
+  [4;35;1mUser Update (0.6ms)[0m   [0mUPDATE "users" SET "updated_at" = '2010-02-17 16:22:42', "sign_in_count" = 2, "current_sign_in_at" = '2010-02-17 16:22:42' WHERE "id" = 1[0m
+  [4;36;1mMeeting Load (0.3ms)[0m   [0;1mSELECT * FROM "meetings" [0m
+Completed in 347ms (View: 31, DB: 2) | 200 OK [http://localhost/meetings.xml]
