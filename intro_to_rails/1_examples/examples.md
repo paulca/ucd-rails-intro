@@ -136,7 +136,7 @@
                        helper
                        mailer
                        migration
-                        model
-                        plugin
-                        resource
-                        scaffold
+                       model
+                       plugin
+                       resource
+                       scaffold

@@ -61,10 +61,10 @@
 !SLIDE
     
     @@@ html
-    <%= '<script language="javasciprt">
+    <%= '<script language="javascript">
             alert("I am evil")
         </script>' %>
-    => &lt;script language=&quot;javasciprt&quot;&gt;
+    => &lt;script language=&quot;javascript&quot;&gt;
              alert(&quot;I am evil&quot;)
          &lt;/script&gt;
 
